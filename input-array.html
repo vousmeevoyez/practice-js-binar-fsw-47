@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Input Array</title>
+</head>
+<body>
+    <button onclick="inputArray()">Input Array</button>
+    <div id="arrayDisplay"></div>
+
+    <script>
+        function inputArray() {
+            var array = []; // Initialize an empty array
+            var input;
+
+            while (true) {
+                input = prompt("Enter an array element (or leave empty to finish):");
+                if (input === "" || input === null) break; // Exit loop if input is empty or the user clicks cancel
+                array.push(input); // Add the input to the array
+            }
+
+            // Display the array in an alert and on the page
+            alert("Array: " + array.join(", "));
+            document.getElementById('arrayDisplay').innerText = "Array: " + array.join(", ");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Display Object</title>
+</head>
+<body>
+    <div id="objectOutput"></div> <!-- Container to display the object -->
+
+    <script>
+        // Define the object
+        const myObject = {
+            name: 'John Doe',
+            age: 30,
+            city: 'New York'
+        };
+
+        // Get the container where the object will be displayed
+        const outputDiv = document.getElementById('objectOutput');
+
+        // Create a string to hold HTML representation of the object
+        let content = '<ul>';
+        for (let key in myObject) {
+            content += `<li>${key}: ${myObject[key]}</li>`; // Add each key-value pair as a list item
+        }
+        content += '</ul>';
+
+        // Update the innerHTML of the div to show the object
+        outputDiv.innerHTML = content;
+    </script>
+</body>
+</html>

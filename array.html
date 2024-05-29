@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Display Array</title>
+</head>
+<body>
+    <div id="arrayOutput"></div> <!-- Container to display the array -->
+
+    <script>
+        // Define the array
+        const myArray = ['Apple', 'Banana', 'Cherry'];
+
+        // Get the container where the array will be displayed
+        const outputDiv = document.getElementById('arrayOutput');
+
+        // Create a string with all array elements in a list format
+        let content = '<ul>';
+        for (let item of myArray) {
+            content += `<li>${item}</li>`; // Add each item as a list item
+        }
+        content += '</ul>';
+
+        // Update the innerHTML of the div to show the array
+        outputDiv.innerHTML = content;
+    </script>
+</body>
+</html>
