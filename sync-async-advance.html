@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Synchronous vs Asynchronous</title>
+    <style>
+        .output {
+            margin-top: 20px;
+        }
+        .output p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Advanced Synchronous vs Asynchronous JavaScript</h1>
+
+    <button onclick="synchronousFetch()">Synchronous Fetch</button>
+    <button onclick="asynchronousFetch()">Asynchronous Fetch</button>
+
+    <div class="output" id="syncOutput"></div>
+    <div class="output" id="asyncOutput"></div>
+
+    <script>
+        function synchronousFetch() {
+            document.getElementById('syncOutput').innerHTML = "<p>Synchronous Fetch Started...</p>";
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1", false); // false for synchronous request
+            xhr.send();
+            
+            if (xhr.status === 200) {
+                document.getElementById('syncOutput').innerHTML += "<p>Synchronous Fetch Completed</p>";
+                document.getElementById('syncOutput').innerHTML += `<p>Response: ${xhr.responseText}</p>`;
+            } else {
+                document.getElementById('syncOutput').innerHTML += "<p>Synchronous Fetch Failed</p>";
+            }
+        }
+
+        async function asynchronousFetch() {
+            document.getElementById('asyncOutput').innerHTML = "<p>Asynchronous Fetch Started...</p>";
+            try {
+                let response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+                if (response.ok) {
+                    let data = await response.json();
+                    document.getElementById('asyncOutput').innerHTML += "<p>Asynchronous Fetch Completed</p>";
+                    document.getElementById('asyncOutput').innerHTML += `<p>Response: ${JSON.stringify(data)}</p>`;
+                } else {
+                    document.getElementById('asyncOutput').innerHTML += "<p>Asynchronous Fetch Failed</p>";
+                }
+            } catch (error) {
+                document.getElementById('asyncOutput').innerHTML += "<p>Asynchronous Fetch Error</p>";
+            }
+        }
+    </script>
+</body>
+</html>

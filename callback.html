@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Example</title>
+</head>
+<body>
+    <h1>Callback Function Example</h1>
+    <button id="callbackButton">Click Me!</button>
+    <p id="output"></p>
+
+    <script>
+        // Function that performs a task and then calls a callback function
+        function performTask(callback) {
+            document.getElementById("output").innerText = "Performing task...";
+            setTimeout(function() {
+                document.getElementById("output").innerText = "Task completed!";
+                callback();
+            }, 2000);
+        }
+
+        // Callback function to be executed after the task is done
+        function afterTask() {
+            document.getElementById("output").innerText += " Callback executed!";
+        }
+
+        // Adding event listener to the button
+        document.getElementById("callbackButton").addEventListener("click", function() {
+            performTask(afterTask);
+        });
+    </script>
+</body>
+</html>

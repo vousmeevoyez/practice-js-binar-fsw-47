@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Restaurant Order Simulator</title>
+<script>
+async function placeOrder(item) {
+    console.log(`Placing order for ${item}.`);
+    await cookItem(item);
+    alert(`${item} is ready!`);
+}
+
+function cookItem(item) {
+    return new Promise((resolve) => {
+        let waitTime = 0;
+        if (item === "burger") {
+            waitTime = 3000; // 3 seconds
+        } else if (item === "fried chicken") {
+            waitTime = 5000; // 5 seconds
+        } else if (item === "pizza") {
+            waitTime = 10000; // 10 seconds
+        }
+        setTimeout(() => {
+            console.log(`${item} cooked.`);
+            resolve();
+        }, waitTime);
+    });
+}
+
+function takeOrder() {
+    const order = prompt("What would you like to order? (burger, fried chicken, pizza)");
+    if (order === "burger" || order === "fried chicken" || order === "pizza") {
+        placeOrder(order);
+    } else {
+        alert("We only serve burger, fried chicken, or pizza. Please place a valid order.");
+    }
+}
+</script>
+</head>
+<body>
+<h1>Welcome to Async Restaurant</h1>
+<ul><li>Burger: 3 seconds waiting time</li></ul>
+<ul><li>Fried chicken: 5 seconds waiting time</li></ul>
+<ul><li>Pizza: 10 seconds waiting time</li></ul>
+
+
+<button onclick="takeOrder()">Place Order</button>
+</body>
+</html>

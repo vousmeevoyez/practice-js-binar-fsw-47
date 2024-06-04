@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synchronous vs Asynchronous</title>
+</head>
+<body>
+    <h1>Synchronous vs Asynchronous JavaScript</h1>
+
+    <button onclick="synchronousOperation()">Synchronous Operation</button>
+    <button onclick="asynchronousOperation()">Asynchronous Operation</button>
+    <button onclick="showAlert()">Show alert</button>
+
+    <p id="syncOutput"></p>
+    <p id="asyncOutput"></p>
+
+    <script>
+        function showAlert() {
+            alert('hello');
+        }
+
+        function synchronousOperation() {
+            document.getElementById('syncOutput').innerText = "Synchronous Operation Started...";
+            // Synchronous delay
+            const start = Date.now();
+            while (Date.now() - start < 3000) {
+                // Blocking code for 3 seconds
+            }
+            document.getElementById('syncOutput').innerText = "Synchronous Operation Completed";
+        }
+
+        function asynchronousOperation() {
+            document.getElementById('asyncOutput').innerText = "Asynchronous Operation Started...";
+            // Asynchronous delay using setTimeout
+            setTimeout(() => {
+                document.getElementById('asyncOutput').innerText = "Asynchronous Operation Completed";
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
